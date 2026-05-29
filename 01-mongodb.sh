@@ -33,7 +33,7 @@ VALIDATE $? "Adding Mongo repo"
 dnf install mongodb-org -y &>> $LOGS_FILE 
 VALIDATE $? "Installing MongoDB"
 
-systemtcl enable --now mongod
+systemctl enable --now mongod
 VALIDATE $? "Starting and enabling MongoDB"
 
 sed -i 's/127.0.0.0/0.0.0.0/g' /etc/mongod.conf
@@ -41,3 +41,4 @@ VALIDATE $? "Allowing remote connections to MongoDB"
 
 systemctl restart mongod
 VALIDATE $? "Restarting MongoDB"
+
