@@ -5,14 +5,14 @@ ZONE_ID="Z100713130SN6SD90QW7V"
 DOMAIN_NAME="vnmurthy.online"
 
 for instance in $@
-do 
+do
     echo "Launching instance: $instance"
     INSTANCE_ID=$(aws ec2 run-instances \
         --image-id ami-0220d79f3f480ecf5 \
         --instance-type t2.micro \
         --security-groups "roboshop-common" "roboshop-$instance" \
-        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,value=roboshop-$instance}]" \
-        --query 'Instance[0].InstanceId' \
+        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]" \
+        --query 'Instances[0].InstanceId' \
         --output text
     )
     echo "Instance ID: $INSTANCE_ID"
