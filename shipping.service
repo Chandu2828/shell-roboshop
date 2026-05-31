@@ -1,0 +1,14 @@
+[Unit]
+Description=Shipping Service
+
+[Service]
+User=roboshop
+// highlight-start
+Environment=CART_ENDPOINT=cart.vnmurthy.online:80880
+Environment=DB_HOST=mysql.vnmurthy.online
+// highlight-end
+ExecStart=/bin/java -jar /app/shipping.jar
+SyslogIdentifier=shipping
+
+[Install]
+WantedBy=multi-user.target
