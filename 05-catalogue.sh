@@ -74,6 +74,7 @@ if [ $INDEX -lt 0 ]; then
     VALIDATE $? "Load Products"
 else
     echo -e "Products already loaded ... $Y SKIPPING $N"
+fi
 
 systemctl enable catalogue &>>$LOGS_FILE
 systemctl restart catalogue &>>$LOGS_FILE
